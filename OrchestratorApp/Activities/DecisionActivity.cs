@@ -27,7 +27,7 @@ public class DecisionActivity : WorkflowActivity<TransferRequest, string>
                         Amount: {input.Amount}
 
                         Return ONLY one word:
-                        payment OR fraud OR invalid.
+                        payment OR fraud OR invalid
                         ";
 
         var requestBody = new
@@ -76,11 +76,21 @@ public class DecisionActivity : WorkflowActivity<TransferRequest, string>
             Console.WriteLine($"[DecisionActivity] JSON parse error: {ex.Message}");
         }
 
-        Console.WriteLine($"[DecisionActivity] FINAL DECISION = '{decision}'");
+        Console.WriteLine($"[DecisionActivity] RAW DECISION = >{decision}<");
+        Console.WriteLine($"[DecisionActivity] LENGTH = {decision.Length}");
+        Console.WriteLine($"\n[DecisionActivity] FINAL DECISION = '{decision}'\n");
 
-        if (decision == "fraud") return "fraud";
-        if (decision == "invalid") return "invalid";
-
-        return "payment";
+        if (decision == "fraud")
+        {
+            return "fraud";
+        }
+        else if (decision == "invalid")
+        {
+            return "invalid";
+        }
+        else
+        {
+            return "payment";
+        }
     }
 }

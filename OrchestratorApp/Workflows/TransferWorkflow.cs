@@ -26,7 +26,7 @@ public class TransferWorkflow : Workflow<TransferRequest, string>
 
 
 
-        Console.WriteLine($"[Workflow] Decision = {decision}");
+        Console.WriteLine($"\n[Workflow] Decision = {decision}\n");
 
         var result = string.Empty;
         if (decision == "payment")
